@@ -1,40 +1,54 @@
 import UIKit
+import SwiftUI
+import Combine
 
 final class ListHeroesViewController: UIViewController {
-    var mainView: ListHeroesView { return view as! ListHeroesView  }
     
-    var presenter: ListHeroesPresenterProtocol?
-    var listHeroesProvider: ListHeroesAdapter?
+    // MARK: - Properties
+    private var viewModel: ListHeroesViewModel!
+    private var hostingController: UIHostingController<ListHeroesSwiftUIView>?
     
-    override func loadView() {
-        view = ListHeroesView()
+    // MARK: - Initialization
+    convenience init(viewModel: ListHeroesViewModel = ListHeroesViewModel()) {
+        self.init(nibName: nil, bundle: nil)
+        self.viewModel = viewModel
     }
-
+    
+    // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        listHeroesProvider = ListHeroesAdapter(tableView: mainView.heroesTableView)
-        presenter?.getHeroes()
-        presenter?.ui = self
         
-        title = presenter?.screenTitle()
+        viewModel = ListHeroesViewModel()
+        setupSwiftUIView()
+    }
+    
+    // MARK: - Setup
+    private func setupSwiftUIView() {
+        // Create SwiftUI view with the ViewModel
+        let swiftUIView = ListHeroesSwiftUIView(viewModel: viewModel)
         
-        mainView.heroesTableView.delegate = self
+        // Create hosting controller
+        let hostingController = UIHostingController(rootView: swiftUIView)
+        self.hostingController = hostingController
+        
+        // Add as child view controller
+        addChild(hostingController)
+        view.addSubview(hostingController.view)
+        
+        // Setup constraints
+        hostingController.view.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            hostingController.view.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            hostingController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            hostingController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            hostingController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+        
+        hostingController.didMove(toParent: self)
+    }
+    
+    // MARK: - Deinitialization
+    deinit {
+        hostingController?.removeFromParent()
     }
 }
-
-extension ListHeroesViewController: ListHeroesUI {
-    func update(heroes: [CharacterDataModel]) {
-        listHeroesProvider?.heroes = heroes
-    }
-}
-
-extension ListHeroesViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let presenter = ListHeroesPresenter()
-        let listHeroesViewController = ListHeroesViewController()
-        listHeroesViewController.presenter = presenter
-        
-        navigationController?.pushViewController(listHeroesViewController, animated: true)
-    }
-}
-
