@@ -10,6 +10,7 @@ A modern iOS application showcasing Marvel superheroes using Clean Architecture,
 ## 📖 Table of Contents
 
 - [Overview](#overview)
+- [Architecture](#architecture)
 
 
 ## 🎯 Overview
@@ -25,3 +26,27 @@ WallaMarvel is a comprehensive iOS application that demonstrates modern iOS deve
 - **Pagination**: Infinite scroll with efficient data loading
 - **Search Functionality**: Real-time local search with debouncing
 - **Error Handling**: Comprehensive error states and recovery mechanisms
+
+  ## 🏗️ Architecture
+
+The application follows **Clean Architecture** principles combined with **MVVM** pattern for optimal separation of concerns, testability, and maintainability.
+
+### Layer Responsibilities
+
+#### 1. **Presentation Layer**
+- **SwiftUI Views**: Declarative UI components
+- **ViewModels**: Business logic presentation and state management
+- **Coordinators**: Navigation flow management
+- **Adapters**: Bridge between UIKit and SwiftUI when needed
+
+#### 2. **Domain Layer**
+- **Use Cases**: Application-specific business rules
+- **Entities**: Core business objects
+- **Repository Protocols**: Data access abstractions
+
+#### 3. **Data Layer**
+- **API Client**: Network communication with Marvel API
+- **Data Sources**: Data retrieval and management
+- **Repository Implementations**: Concrete data access implementations
+- **Data Models**: API response models and transformations
+
