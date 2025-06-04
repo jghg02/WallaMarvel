@@ -1,7 +1,8 @@
 import Foundation
 
 protocol MarvelDataSourceProtocol {
-    func getHeroes(completionBlock: @escaping (CharacterDataContainer) -> Void)
+    func getHeroes(limit: Int, offset: Int, completionBlock: @escaping (Result<CharacterDataContainer, MarvelAPIError>) -> Void)
+    func getHeroById(_ id: Int, completionBlock: @escaping (Result<CharacterDataContainer, MarvelAPIError>) -> Void)
 }
 
 final class MarvelDataSource: MarvelDataSourceProtocol {
@@ -11,7 +12,11 @@ final class MarvelDataSource: MarvelDataSourceProtocol {
         self.apiClient = apiClient
     }
     
-    func getHeroes(completionBlock: @escaping (CharacterDataContainer) -> Void) {
-        return apiClient.getHeroes(completionBlock: completionBlock)
+    func getHeroes(limit: Int = 20, offset: Int = 0, completionBlock: @escaping (Result<CharacterDataContainer, MarvelAPIError>) -> Void) {
+        return apiClient.getHeroes(limit: limit, offset: offset, completionBlock: completionBlock)
+    }
+    
+    func getHeroById(_ id: Int, completionBlock: @escaping (Result<CharacterDataContainer, MarvelAPIError>) -> Void) {
+        return apiClient.getHeroById(id, completionBlock: completionBlock)
     }
 }
