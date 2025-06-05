@@ -7,12 +7,6 @@
 
 A modern iOS application showcasing Marvel superheroes using Clean Architecture, MVVM pattern, SwiftUI, and Combine framework. Built with scalable architecture, reactive programming, and advanced iOS development patterns.
 
-## 📖 Table of Contents
-
-- [Overview](#overview)
-- [Architecture](#architecture)
-
-
 ## 🎯 Overview
 
 WallaMarvel is a comprehensive iOS application that demonstrates modern iOS development practices by displaying Marvel superheroes in an intuitive, user-friendly interface. The app showcases advanced architectural patterns, reactive programming with Combine, and modern SwiftUI development.
@@ -49,4 +43,23 @@ The application follows **Clean Architecture** principles combined with **MVVM**
 - **Data Sources**: Data retrieval and management
 - **Repository Implementations**: Concrete data access implementations
 - **Data Models**: API response models and transformations
+
+### Key Transformations
+
+#### 1. **Navigation Evolution**
+- **Before**: Direct view controller navigation
+- **After**: Coordinator pattern for centralized navigation management
+
+#### 2. **Data Flow Evolution**
+- **Before**: ViewController → Presenter → API → DataModel
+- **After**: View → ViewModel → UseCase → Repository → DataSource → API
+
+#### 3. **State Management Evolution**
+- **Before**: Manual state updates and delegate patterns
+- **After**: Reactive state with `@Published` properties and Combine
+
+#### 4. **UI Evolution**
+- **Before**: UIKit
+- **After**: SwiftUI with declarative syntax
+
 
