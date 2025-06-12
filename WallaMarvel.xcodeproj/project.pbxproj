@@ -31,6 +31,7 @@
 		CA8237AE2DEE9BC600750F32 /* HeroDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8237AD2DEE9BC600750F32 /* HeroDetailViewModel.swift */; };
 		CA8237AF2DEE9BC600750F32 /* HeroDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8237AC2DEE9BC600750F32 /* HeroDetailView.swift */; };
 		CA8237F52DEFFDE600750F32 /* GetHeroById.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8237F42DEFFDE600750F32 /* GetHeroById.swift */; };
+		CA9810562DFA9774008DE7AE /* APIClientTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9810552DFA9774008DE7AE /* APIClientTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,7 @@
 		CA8237AC2DEE9BC600750F32 /* HeroDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroDetailView.swift; sourceTree = "<group>"; };
 		CA8237AD2DEE9BC600750F32 /* HeroDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroDetailViewModel.swift; sourceTree = "<group>"; };
 		CA8237F42DEFFDE600750F32 /* GetHeroById.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetHeroById.swift; sourceTree = "<group>"; };
+		CA9810552DFA9774008DE7AE /* APIClientTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClientTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -152,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				1A0E3AAF2862F7E300132FCB /* WallaMarvelTests.swift */,
+				CA9810552DFA9774008DE7AE /* APIClientTest.swift */,
 			);
 			path = WallaMarvelTests;
 			sourceTree = "<group>";
@@ -413,6 +416,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A0E3AB02862F7E300132FCB /* WallaMarvelTests.swift in Sources */,
+				CA9810562DFA9774008DE7AE /* APIClientTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
