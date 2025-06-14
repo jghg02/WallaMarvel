@@ -62,4 +62,9 @@ The application follows **Clean Architecture** principles combined with **MVVM**
 - **Before**: UIKit
 - **After**: SwiftUI with declarative syntax
 
+## Demo 
+
+https://github.com/user-attachments/assets/7d824c58-f8be-4e7a-a733-612089286165
+
+
 
